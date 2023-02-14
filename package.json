@@ -4,16 +4,21 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "some command to be run",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@nivo/core": "^0.80.0",
+    "@nivo/pie": "^0.80.0",
     "axios": "^1.2.5",
     "framer-motion": "^8.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-record-webcam": "^0.0.18",
     "react-router-dom": "^6.8.0",
+    "react-webcam": "^7.0.1",
     "recoil": "^0.7.6"
   },
   "devDependencies": {
