@@ -2,10 +2,8 @@ import React from "react";
 import Webcam from "react-webcam";
 // import "./App.css";
 import LabelBottomNavigation from "../component/BottomNavigation"
-import GroupButton from "../component/GruopButton";
-import Webcam1 from "../component/Camera"
-import ReportPanel from "../component/ReportPanel"
-import Divider from '@mui/material/Divider';
+import Calendar from "../component/Calendar1";
+import {CalendarData} from "../component/CalendarData1"
 
 let style: React.CSSProperties = {
     display:"flex",
@@ -19,17 +17,18 @@ let style: React.CSSProperties = {
     height: 500,
 }
 
-function MainPage() {
+function CalendarPage() {
   return (
-    <div className="App">
-      <Webcam1 />
-      
-      <ReportPanel/>
-      {/* <GroupButton/> */}
+    <>
+    <div style={style}>
+      {/* <Webcam /> */}
+      <Calendar data={CalendarData}/>
+    </div>
+    <div>
       <LabelBottomNavigation/>
     </div>
-    
+    </>
   );
 }
 
-export default MainPage;
+export default CalendarPage;

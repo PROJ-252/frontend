@@ -3,34 +3,47 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import FolderIcon from '@mui/icons-material/Folder';
 import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import AssessmentIcon from '@mui/icons-material/Assessment';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
+import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom';
 
 export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState('recents');
-
+  const navigate = useNavigate();
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
   return (
-    <BottomNavigation sx={{ width: 500 }} value={value} onChange={handleChange}>
+    <Box sx={{ pb: 7 }}>
+    <BottomNavigation sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} value={value} onChange={handleChange}>
       <BottomNavigationAction
-        label="Recents"
-        value="recents"
+        onClick={() => navigate("/main")}
+        label="AI Stopwatch"
+        value="mainpage"
         icon={<RestoreIcon />}
       />
       <BottomNavigationAction
-        label="Favorites"
-        value="favorites"
-        icon={<FavoriteIcon />}
+        onClick={() => navigate("/report")}
+        label="Report"
+        value="reportpage"
+        icon={<AssessmentIcon />}
       />
       <BottomNavigationAction
-        label="Nearby"
-        value="nearby"
-        icon={<LocationOnIcon />}
+        onClick={() => navigate("/calendar")}
+        label="Calendar"
+        value="calendarpage"
+        icon={<CalendarMonthIcon />}
       />
-      <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} />
+      <BottomNavigationAction 
+        onClick={() => navigate("/setting")}
+        label="Setting" 
+        value="settingpage" 
+        icon={<SettingsSuggestIcon />} />
     </BottomNavigation>
+    </Box>
   );
 }
