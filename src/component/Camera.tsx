@@ -3,42 +3,46 @@ import Webcam from 'react-webcam';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import useCamera from '../hook/useCamera';
+import { useRecoilValue } from 'recoil';
+import { isShowVidewState } from '../store/video';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import zIndex from '@mui/material/styles/zIndex';
 // import * as React from 'react';
 
-const stylecam: React.CSSProperties = {
+
+const CamViewFrame = styled.div({
   position: "absolute",
   bottom: 150,
-//   left: 100,
+   left: 100,
   right: 0,
-  height: 100,
-  fontSize: 30,
-  borderRadius: 5,
+})
 
+const WebcamStyle: React.CSSProperties = {
+  display: 'block',
+  width: '100%',
+  height: 'auto',
+  borderRadius: 10
 }
+
+
+
+const videoConstraints = {
+  facingMode: "user",
+  widht: 200,
+  height: 320
+}
+
 
 function Webcam1() {
 
-    const [isShowVideo, setIsShowVideo] = useState(false);
     const videoElement = useRef(null);
-    
-    const videoConstraints = {
-        width: 140,
-        height: 180,
-        facingMode: "user",
-        borderRadius: 5,
+    const isShowVideo = useRecoilValue(isShowVidewState)
 
-    }
+    const { startCam, stopCam } = useCamera()
 
-    const startCam = () => {
-        setIsShowVideo(true);
-    }
 
-    const stopCam = () => {
-        // let stream = HTMLVideoElement.current.stream;
-        // const tracks = stream.getTracks();
-        // tracks.forEach((track: { stop: () => any; }): any => track.stop());
-        setIsShowVideo(false);
-    }
     const buttons = [
         <Button onClick={startCam} key="one">시작</Button>,
         <Button key="two">일시정지</Button>,
@@ -46,11 +50,11 @@ function Webcam1() {
       ];
     return (
         <div>
-            <div className="camView" style={stylecam}>
+            <CamViewFrame>
                 {isShowVideo &&
-                    <Webcam audio={false} ref={videoElement} videoConstraints={videoConstraints} />
+                    <Webcam style={WebcamStyle} audio={false} ref={videoElement} videoConstraints={videoConstraints} />
                 }
-            </div>
+            </CamViewFrame>
             <Box
             sx={{
                 display: 'flex',
