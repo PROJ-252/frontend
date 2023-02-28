@@ -1,5 +1,5 @@
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { isShowVidewState } from "../store/video";
+import { isClickState, isShowVidewState } from "../store/video";
 
 
 
@@ -18,9 +18,16 @@ const useCamera = () => {
         // tracks.forEach((track: { stop: () => any; }): any => track.stop());
   }
 
+  const [isClick, setIsClick] = useRecoilState(isClickState)
+
+  const changeCameraViewState = () => {
+    setIsClick(!isClick)
+  }
+
   return {
     startCam,
-    stopCam
+    stopCam,
+    changeCameraViewState
   }  
 }
 

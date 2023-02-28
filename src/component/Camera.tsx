@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import useCamera from '../hook/useCamera';
 import { useRecoilValue } from 'recoil';
-import { isShowVidewState } from '../store/video';
+import { isClickState, isShowVidewState } from '../store/video';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import zIndex from '@mui/material/styles/zIndex';
@@ -19,11 +19,18 @@ const CamViewFrame = styled.div({
   right: 0,
 })
 
-const WebcamStyle: React.CSSProperties = {
+const openedWebcamStyle: React.CSSProperties = {
   display: 'block',
-  width: '100%',
+  width: 100,
   height: 'auto',
   borderRadius: 10
+}
+
+const closedWebcamStyle: React.CSSProperties = {
+  display: 'block',
+  width: 200,
+  height: 'auto',
+  borderRadius: 30
 }
 
 
@@ -35,12 +42,15 @@ const videoConstraints = {
 }
 
 
+
 function Webcam1() {
 
     const videoElement = useRef(null);
-    const isShowVideo = useRecoilValue(isShowVidewState)
 
-    const { startCam, stopCam } = useCamera()
+    const isShowVideo = useRecoilValue(isShowVidewState)
+    const isClick = useRecoilValue(isClickState)
+
+    const { startCam, stopCam, changeCameraViewState } = useCamera()
 
 
     const buttons = [
@@ -52,7 +62,13 @@ function Webcam1() {
         <div>
             <CamViewFrame>
                 {isShowVideo &&
-                    <Webcam style={WebcamStyle} audio={false} ref={videoElement} videoConstraints={videoConstraints} />
+                    <Webcam
+                      onClick={changeCameraViewState}
+                      style={isClick ? openedWebcamStyle : closedWebcamStyle}
+                      audio={false}
+                      ref={videoElement}
+                      videoConstraints={videoConstraints}
+                    />
                 }
             </CamViewFrame>
             <Box
