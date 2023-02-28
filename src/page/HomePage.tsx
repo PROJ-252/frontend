@@ -1,16 +1,25 @@
-import FixedBottomNavigation  from "../component/BottomNavigation";
-import SignInPageComponent from "../component/SigninPageComponent";
-import MyResponsivePieCanvas from "../component/MainPageComponent"
-import {piedata} from "../component/piedata"
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { useNavigate } from 'react-router-dom';
 import AlarmAddIcon from '@mui/icons-material/AlarmAdd';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1769aa',
+    },
+    secondary: {
+      main: '#0097a7',
+    },
+  },
+});
+
 
 let style1: React.CSSProperties = {
   display:"flex",
-  background:"white",
+  // background:"white",
   justifyContent: "center",
   alignItems: "center",
   position: "absolute",
@@ -19,9 +28,10 @@ let style1: React.CSSProperties = {
   right: 0,
   height: 200,
 }
+
 let style2: React.CSSProperties = {
   display:"flex",
-  background:"white",
+  backgroundColor: "#a5e2f1",
   justifyContent: "center",
   alignItems: "center",
   position: "absolute",
@@ -29,7 +39,19 @@ let style2: React.CSSProperties = {
   left: 0,
   right: 0,
   height: 1000,
-  fontSize: 25,
+  fontSize: 30,
+}
+let style: React.CSSProperties = {
+  // display:"flex",
+  // background:"white",
+  // justifyContent: "center",
+  // alignItems: "center",
+  // position: "absolute",
+  // bottom: 0,
+  // left: 0,
+  // right: 0,
+  // height: 200,
+  backgroundColor: "#a5e2f1",
 }
 
 const HomePage = () => {
@@ -37,20 +59,24 @@ const HomePage = () => {
 
   return (
     <>
-    <div style={style2}><AlarmAddIcon/> AI Stopwatch</div>
-    <div style={style1}>
-    <Stack 
-    sx={{height: 100}}
-    direction="column"
-    // justifyContent="space-evenly"
-    alignItems="center"
-    spacing={2}>
-      <Button onClick={() => navigate("/signin")} sx={{ width: 180 }} variant="outlined" color="secondary">로그인</Button>
-      <Button onClick={() => navigate("/signup")} sx={{ width: 180 }} variant="contained" color="secondary" href="#outlined-buttons">
-          회원가입
-      </Button>
-    </Stack>
-    </div>
+      <div style={style2}><AlarmAddIcon/> AI Stopwatch</div>
+      <div style={style1}>
+      <Stack 
+      sx={{height: 100}}
+      direction="column"
+      // justifyContent="space-evenly"
+      alignItems="center"
+      spacing={2}>
+        <ThemeProvider theme={theme}>
+        <Button onClick={() => navigate("/signin")} sx={{ width: 180 }} variant="contained" color="primary">로그인</Button>
+        </ThemeProvider>
+        <ThemeProvider theme={theme}>
+        <Button onClick={() => navigate("/signup")} sx={{ width: 180 }} variant="contained" color="secondary" href="#outlined-buttons" >
+            회원가입
+        </Button>
+        </ThemeProvider>
+      </Stack>
+      </div>
     </>
   )
 }

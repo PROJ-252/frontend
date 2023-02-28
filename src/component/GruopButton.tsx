@@ -16,6 +16,7 @@ export default function GroupButton() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        
         '& > *': {
           m: 1,
         },
