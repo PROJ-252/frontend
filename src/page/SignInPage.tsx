@@ -27,7 +27,16 @@ function Copyright(props: any) {
   );
 }
 
-const theme = createTheme();
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#26a69a',
+    },
+    secondary: {
+      main: '#0097a7',
+    },
+  },
+});
 
 export default function SignInPage() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

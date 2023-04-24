@@ -1,0 +1,24 @@
+body{
+    /* width: auto;
+    height: 700px;
+    align-items: center;
+    text-align: center; */
+    font-family: "PoiretOne-Regular";
+}
+
+@font-face {
+    font-family: "Lato-Black";
+    src: url("./font/Lato/Lato-Black.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Lato-Regular";
+    src: url("./font/Lato/Lato-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Lato-Italic";
+    src: url("./font/Lato/Lato-Italic.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PoiretOne-Regular";
+    src: url("./fonts/Poiret_One/PoiretOne-Regular.ttf") format("truetype");
+}

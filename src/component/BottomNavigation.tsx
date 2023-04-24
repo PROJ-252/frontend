@@ -9,6 +9,18 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
 import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1769aa',
+    },
+    secondary: {
+      main: '#0097a7',
+    },
+  },
+});
 
 export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState('recents');
@@ -18,12 +30,12 @@ export default function LabelBottomNavigation() {
   };
 
   return (
-    <Box sx={{ pb: 7 }}>
-    <BottomNavigation sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} value={value} onChange={handleChange}>
+    // <Box sx={{ pb: 0}}>
+    <BottomNavigation sx={{backgroundColor: '#d0e7f7', borderTop: 4, borderColor: '#164b8d', position: 'fixed', bottom: 0, left: 0, right: 0 }} value={value} onChange={handleChange}>
       <BottomNavigationAction
         onClick={() => navigate("/main")}
-        label="AI Stopwatch"
-        value="mainpage"
+        label="Stopwatch1"
+        value="mainpage"  
         icon={<RestoreIcon />}
       />
       <BottomNavigationAction
@@ -44,6 +56,6 @@ export default function LabelBottomNavigation() {
         value="settingpage" 
         icon={<SettingsSuggestIcon />} />
     </BottomNavigation>
-    </Box>
+    // </Box>
   );
 }

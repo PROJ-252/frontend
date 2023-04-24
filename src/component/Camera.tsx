@@ -8,15 +8,15 @@ import { useRecoilValue } from 'recoil';
 import { isClickState, isShowVidewState } from '../store/video';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import zIndex from '@mui/material/styles/zIndex';
 // import * as React from 'react';
 
 
 const CamViewFrame = styled.div({
   position: "absolute",
-  bottom: 150,
-   left: 100,
+  bottom: 100,
+  left: 230,
   right: 0,
+  zIndex: 5,
 })
 
 const openedWebcamStyle: React.CSSProperties = {
@@ -37,8 +37,9 @@ const closedWebcamStyle: React.CSSProperties = {
 
 const videoConstraints = {
   facingMode: "user",
-  widht: 200,
-  height: 320
+  width: 200,
+  height: 320,
+  // zIndex: 5,
 }
 
 
@@ -57,7 +58,8 @@ function Webcam1() {
         <Button onClick={startCam} key="one">시작</Button>,
         <Button key="two">일시정지</Button>,
         <Button onClick={stopCam} key="three">사용종료</Button>,
-      ];
+    ];
+
     return (
         <div>
             <CamViewFrame>
@@ -72,19 +74,21 @@ function Webcam1() {
                 }
             </CamViewFrame>
             <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                
-                '& > *': {
-                m: 1,
-                },
-            }}
+              sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  width: '100%',
+                  height: 60,
+                  marginTop: 3,
+                  '& > *': {
+                  m: 1,
+                  },
+              }}
             >
-            <ButtonGroup size="large" aria-label="large button group">
-                {buttons}
-            </ButtonGroup>
+              <ButtonGroup size="large" aria-label="large button group">
+                  {buttons}
+              </ButtonGroup>
             </Box>
         </div>
     );

@@ -52,10 +52,10 @@ export default function ReportPanel() {
   const handleChangeIndex = (index: number) => {
     setValue(index);
   };
-
+  // '#c1eff4'
   return (
-    <Box sx={{ bgcolor: 'background.paper', width: '100%' }}>
-      <AppBar position="static">
+    <Box sx={{ position: 'absolute', bgcolor: 'white', width: '90%', height: '70%', left: 20, bottom: 80, right: 40, zIndex: 0}}>
+      <AppBar position="relative">
         <Tabs
           sx={{width: '100%'}}
           value={value}
@@ -65,8 +65,8 @@ export default function ReportPanel() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Report One" {...a11yProps(0)} />
-          <Tab label="Report Two" {...a11yProps(1)} />
+          <Tab label="Report" {...a11yProps(0)} />
+          
           {/* <Tab label="Item Three" {...a11yProps(2)} /> */}
         </Tabs>
       </AppBar>
@@ -76,11 +76,9 @@ export default function ReportPanel() {
         onChangeIndex={handleChangeIndex}
       > */}
         <TabPanel value={value} index={0} dir={theme.direction}>
-          Report One
+          Report
         </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          Report Two
-        </TabPanel>
+      
         
       {/* </SwipeableViews> */}
     </Box>
